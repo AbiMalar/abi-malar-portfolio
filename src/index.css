@@ -1,0 +1,578 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body antialiased;
+
+  color: #f7f4ff;
+
+  background:
+    radial-gradient(
+      circle at 8% 8%,
+      rgba(155, 126, 222, 0.20),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 18%,
+      rgba(200, 184, 240, 0.14),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 50% 82%,
+      rgba(139, 92, 246, 0.12),
+      transparent 32%
+    ),
+    #1b1826;
+
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(196, 181, 253, 0.35);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1b1826;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #c4b5fd,
+    #8b5cf6
+  );
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #ddd6fe,
+    #a78bfa
+  );
+}
+
+:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+
+/* =========================================================
+   COMPONENTS
+========================================================= */
+
+@layer components {
+
+  /* =======================================================
+     GLASS / CARDS
+  ======================================================= */
+
+  .glass {
+    @apply border backdrop-blur-xl;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.085),
+        rgba(255, 255, 255, 0.035)
+      );
+
+    border-color: rgba(200, 184, 240, 0.16);
+
+    box-shadow:
+      0 20px 55px -35px rgba(10, 8, 20, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300;
+  }
+
+  .glass-hover:hover {
+    border-color: rgba(200, 184, 240, 0.35);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(155, 126, 222, 0.12),
+        rgba(255, 255, 255, 0.055)
+      );
+
+    box-shadow:
+      0 25px 65px -35px rgba(124, 58, 237, 0.38),
+      0 0 35px rgba(200, 184, 240, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+
+  /* =======================================================
+     GRADIENT TEXT
+  ======================================================= */
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+
+    background-image:
+      linear-gradient(
+        100deg,
+        #eee7ff 0%,
+        #c8b8f0 30%,
+        #a78bda 65%,
+        #e9ddff 100%
+      );
+  }
+
+
+  /* =======================================================
+     PRIMARY BUTTON
+  ======================================================= */
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+    rounded-xl px-5 py-3
+    font-body font-semibold text-sm
+    text-white
+    transition-all duration-300;
+
+    background:
+      linear-gradient(
+        135deg,
+        #8b5cf6,
+        #7c3aed 55%,
+        #a855f7
+      );
+
+    box-shadow:
+      0 14px 35px -14px
+      rgba(139, 92, 246, 0.75);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+
+    background:
+      linear-gradient(
+        135deg,
+        #9f7aea,
+        #8b5cf6 55%,
+        #b36bea
+      );
+
+    box-shadow:
+      0 20px 45px -14px
+      rgba(167, 139, 250, 0.75);
+
+    filter: brightness(1.07);
+  }
+
+
+  /* =======================================================
+     SECONDARY BUTTON
+  ======================================================= */
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+    rounded-xl px-5 py-3
+    font-body font-semibold text-sm
+    transition-all duration-300;
+
+    color: #ddd6fe;
+
+    border: 1px solid rgba(200, 184, 240, 0.18);
+
+    background:
+      rgba(167, 139, 250, 0.055);
+  }
+
+  .btn-secondary:hover {
+    color: #ffffff;
+
+    border-color: rgba(200, 184, 240, 0.40);
+
+    background:
+      rgba(167, 139, 250, 0.12);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 15px 35px -25px
+      rgba(139, 92, 246, 0.60);
+  }
+
+
+  /* =======================================================
+     SECTION EYEBROW
+  ======================================================= */
+
+  .section-eyebrow {
+    @apply font-mono text-[10px]
+    tracking-[0.28em]
+    uppercase;
+
+    color: #c4b5fd;
+  }
+
+
+  /* =======================================================
+     SECTION TITLE
+  ======================================================= */
+
+  .section-title {
+    @apply mt-3
+    font-display
+    text-3xl
+    sm:text-4xl
+    lg:text-[2.7rem]
+    font-semibold
+    tracking-tight;
+
+    color: #f7f4ff;
+  }
+
+
+  /* =======================================================
+     GRID BACKGROUND
+  ======================================================= */
+
+  .grid-bg {
+    background-image:
+      linear-gradient(
+        rgba(200, 184, 240, 0.035) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(200, 184, 240, 0.035) 1px,
+        transparent 1px
+      );
+
+    background-size: 42px 42px;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent,
+        black 12%,
+        black 84%,
+        transparent
+      );
+  }
+
+
+  /* =======================================================
+     SECTION SHELL
+  ======================================================= */
+
+  .section-shell {
+    position: relative;
+  }
+
+  .section-shell::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 1px;
+    height: 55px;
+
+    background:
+      linear-gradient(
+        #c4b5fd,
+        transparent
+      );
+
+    opacity: 0.35;
+  }
+}
+
+
+/* =========================================================
+   SECTION STRUCTURE
+========================================================= */
+
+section {
+  position: relative;
+}
+
+section:not(#home)::after {
+  content: "";
+
+  position: absolute;
+
+  left: 8%;
+  right: 8%;
+  bottom: 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(200, 184, 240, 0.12),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+#home {
+  min-height: 100svh;
+}
+
+#home h1 {
+  text-wrap: balance;
+}
+
+#home .glass {
+  border-radius: 28px;
+}
+
+
+/* =========================================================
+   CARD SHINE
+========================================================= */
+
+article.glass,
+#about .glass,
+#focus .glass,
+#skills .glass,
+#experience .glass,
+#education .glass,
+#achievements .glass,
+#leadership .glass,
+#learning .glass,
+#contact .glass {
+  position: relative;
+  overflow: hidden;
+}
+
+article.glass::before,
+#about .glass::before,
+#focus .glass::before,
+#skills .glass::before,
+#experience .glass::before,
+#education .glass::before,
+#achievements .glass::before,
+#leadership .glass::before,
+#learning .glass::before,
+#contact .glass::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.065),
+      transparent 32%
+    );
+
+  opacity: 0.7;
+}
+
+article.glass:hover {
+  box-shadow:
+    0 28px 75px -38px
+    rgba(124, 58, 237, 0.45),
+    0 0 35px
+    rgba(200, 184, 240, 0.07),
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+#projects article {
+  min-height: 100%;
+}
+
+#projects article h3 {
+  font-size: 1.35rem;
+}
+
+#projects article a {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   TEXT COLORS
+========================================================= */
+
+.text-ink-100 {
+  color: #f7f4ff;
+}
+
+.text-ink-300 {
+  color: #d8d0e5;
+}
+
+.text-ink-400 {
+  color: #c4bbd2;
+}
+
+.text-ink-500 {
+  color: #b4a9c5;
+}
+
+.text-ink-600 {
+  color: #968ba8;
+}
+
+.text-ink-700 {
+  color: #81758f;
+}
+
+
+/* =========================================================
+   FLOATING ANIMATION
+========================================================= */
+
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float-soft {
+  animation:
+    floatSoft 5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PURPLE / LAVENDER GLOW UTILITIES
+========================================================= */
+
+.purple-glow {
+  box-shadow:
+    0 0 60px
+    rgba(139, 92, 246, 0.18);
+}
+
+.lavender-glow {
+  box-shadow:
+    0 0 60px
+    rgba(200, 184, 240, 0.14);
+}
+
+
+/* =========================================================
+   PURPLE BORDER GLOW
+========================================================= */
+
+.border-glow-purple {
+  border-color: rgba(167, 139, 250, 0.28);
+
+  box-shadow:
+    0 0 25px
+    rgba(139, 92, 246, 0.08);
+}
+
+
+/* =========================================================
+   SOFT PULSE
+========================================================= */
+
+@keyframes softPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(1.04);
+  }
+}
+
+.soft-pulse {
+  animation:
+    softPulse 4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  section {
+    scroll-margin-top: 80px;
+  }
+
+  body {
+    background:
+      radial-gradient(
+        circle at 10% 8%,
+        rgba(155, 126, 222, 0.17),
+        transparent 28%
+      ),
+      radial-gradient(
+        circle at 90% 20%,
+        rgba(200, 184, 240, 0.10),
+        transparent 25%
+      ),
+      #1b1826;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
